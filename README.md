@@ -53,6 +53,59 @@ sineweb-00
 [브라우저] - 화면 표시
 
 ## 배포 과정
+1. 서버 준비
+
+    Oracle Cloud Free Tier 가입
+
+    인스턴스 생성 (Ubuntu 22.04, AMD)
+
+    VCN(가상 네트워크) 생성 후 인스턴스에 연결
+
+    Oracle 콘솔 Security List에서 80, 443 포트 오픈
+
+    서버 내부 iptables로 80, 443 포트 추가 오픈
+
+2. 도메인 연결
+
+    가비아에서 sineweb-00-future.cloud 도메인 구입
+
+    DNS A 레코드에 서버 IP(168.138.41.99) 등록
+
+3. 서버 환경 세팅
+   
+    SSH로 서버 접속 후:
+
+    패키지 업데이트 (apt update && apt upgrade)
+
+    Python, pip, venv, Nginx 설치
+
+    프로젝트 파일 업로드 (scp 명령어)
+
+    가상환경(venv) 생성 후 Flask, Gunicorn 등 패키지 설치
+
+4. Gunicorn 서비스 등록
+
+    /etc/systemd/system/mywebsite.service 파일 생성
+
+    서버 재시작해도 자동으로 Flask 앱이 켜지도록 등록
+
+    systemctl enable mywebsite 로 자동 시작 설정
+
+5. Nginx 리버스 프록시 설정
+
+    /etc/nginx/sites-available/mywebsite 설정 파일 작성
+
+    80번 포트로 들어오는 요청을 Gunicorn(5000번 포트)으로 전달하도록 설정
+
+    sites-enabled에 링크 연결 후 Nginx 재시작
+
+6. HTTPS 적용
+
+    Certbot 설치
+
+    Let's Encrypt에서 sineweb-00-future.cloud 인증서 발급
+
+    Nginx 설정 자동 업데이트
 
 
 ## 막혔던 부분과 해결 방법
