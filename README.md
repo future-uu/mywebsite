@@ -20,37 +20,18 @@ sineweb-00
 
 
 ## 전체 구조
-[브라우저]
+```
+브라우저
+   ↕ HTTPS
+  Nginx (리버스 프록시)
+   ↕ HTTP
+  Gunicorn (WSGI 서버)
+   ↕
+  Flask (백엔드)
+   ↕
+  SQLite (DB)
+```
 
-    ↓ HTTPS 요청
-    
-[Nginx] - 리버스 프록시, HTTPS 처리
-
-    ↓ HTTP 전달
-    
-[Gunicorn] - WSGI 서버, 동시 요청 처리
-
-    ↓
-    
-[Flask] - 백엔드 로직 처리
-
-    ↓ 조회/저장
-
-[SQLite] - 유저 데이터 저장
-
-    ↓
-    
-[Flask] - HTML 생성
-
-    ↑
-[Gunicorn]
-
-    ↑
-[Nginx]
-
-    ↑ HTTPS 응답
-    
-[브라우저] - 화면 표시
 
 ## 배포 과정
 1. 서버 준비
