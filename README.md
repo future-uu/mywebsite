@@ -40,6 +40,5 @@ Git:	코드 변경 이력을 관리하는 도구. 언제든지 이전 상태로 
 
 
 ## 막혔던 부분과 해결 방법
-클로드 코드의 도움을 받았는데 지금 당장 하고 있는 일이 무슨 의미인지 이해하기 어려웠음\n
-대부분 클로드 코드가 추천하는 프로그램을 썼는데 DigitalOcean이 유료길래 무료인 Oracle Cloud Free Tier에서 서버 만듦\n
-근데 Oracle cloud Free Tier 쓰니까 사용자가 많은지 A1 서버 자리가 안 나서 
+대부분 클로드 코드가 추천하는 프로그램을 썼는데 DigitalOcean이 유료길래 무료인 Oracle Cloud Free Tier에서 서버 만듦
+근데 Oracle cloud Free Tier 쓰니까 사용자가 많은지 A1(ARM) 인스턴스는 서울/오사카 둘 다 용량이 꽉 차서 못 만들었고 AMD으로 만듦.
